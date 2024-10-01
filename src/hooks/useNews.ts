@@ -7,7 +7,7 @@ interface ArticleSource {
   name: string;
 }
 
-interface Article {
+export interface Article {
   source: ArticleSource;
   author: string;
   title: string;

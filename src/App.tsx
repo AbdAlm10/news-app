@@ -1,5 +1,5 @@
 import "./App.css";
-import { Grid, GridItem, Show } from "@chakra-ui/react";
+import { Grid, GridItem } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import NewsGrid from "./components/NewsGrid";
 
@@ -8,7 +8,7 @@ function App() {
     <Grid
       templateAreas={{
         base: `"nav" "main1"`,
-        md: `"nav nav" "main1 main2" `,
+        md: `"nav nav" "main1 main1 `,
       }}
       templateColumns={{
         base: "1fr",
@@ -21,12 +21,6 @@ function App() {
       <GridItem area="main1">
         <NewsGrid />
       </GridItem>
-
-      <Show above="md">
-        <GridItem area="main2" bg="green">
-          main2
-        </GridItem>
-      </Show>
     </Grid>
   );
 }

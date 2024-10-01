@@ -3,7 +3,13 @@ import logo from "../assets/Logo.webp";
 
 const NavBar = () => {
   return (
-    <Box p={2} border="1px" borderColor="gray.200">
+    <Box
+      p={2}
+      borderBottomColor="gray.200"
+      borderTopColor="black"
+      borderTopWidth={7}
+      borderBottomWidth={1}
+    >
       <Center>
         <Image src={logo} h="35px" w="132px" />
       </Center>
