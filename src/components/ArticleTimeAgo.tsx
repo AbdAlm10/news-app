@@ -29,15 +29,21 @@ const ArticleTimeAgo = ({ article }: Props) => {
   // Determine the appropriate format to display
   const timeAgo: string =
     timeDifferenceMinutes < 60
-      ? `${timeDifferenceMinutes}M ago`
+      ? `${timeDifferenceMinutes} M ago`
       : timeDifferenceHours < 24
-      ? `${timeDifferenceHours}H ago`
+      ? `${timeDifferenceHours} H ago`
       : timeDifferenceDays < 30
-      ? `${timeDifferenceDays}D ago`
-      : `${timeDifferenceMonths}M ago`;
+      ? `${timeDifferenceDays} D ago`
+      : `${timeDifferenceMonths} M ago`;
 
   return (
-    <Text mt={1} color="gray.600">
+    <Text
+      fontFamily={"Montserrat"}
+      fontWeight="400"
+      fontSize={15}
+      mt={1}
+      color="gray.600"
+    >
       {timeAgo}
     </Text>
   );
