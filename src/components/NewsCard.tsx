@@ -1,27 +1,34 @@
 import { Article } from "../hooks/useNews";
-import { Card, CardBody, Heading, HStack, Image, Show } from "@chakra-ui/react";
+import { Card, CardBody, Heading, Image, Box, Text } from "@chakra-ui/react";
+import ArticleTimeAgo from "./ArticleTimeAgo";
 
 interface Props {
   article: Article;
 }
 
 const NewsCard = ({ article }: Props) => {
-  const titleLong =
-    article.title.length >= 50
-      ? `${article.title.padEnd(100, article.title)}... `
+  // Truncate the title if it's longer than 50 characters
+  const truncatedTitle =
+    article.title.length > 50
+      ? `${article.title.slice(0, 50)}...`
       : article.title;
 
   return (
-    <HStack>
-      <Card shadow={0}>
-        <Image src={article.urlToImage} />
-        <CardBody p={0} my={2}>
-          <Heading fontSize={{ base: "md", md: "xl", lg: "2xl" }}>
-            {titleLong}
-          </Heading>
-        </CardBody>
-      </Card>
-    </HStack>
+    <>
+      {article.urlToImage && (
+        <Box>
+          <Card boxShadow="none">
+            <Image src={article.urlToImage} alt={article.title} />
+            <CardBody p={0} my={2}>
+              <Heading fontSize={{ base: "md", md: "xl", lg: "2xl" }}>
+                {truncatedTitle}
+              </Heading>
+              <ArticleTimeAgo article={article} />
+            </CardBody>
+          </Card>
+        </Box>
+      )}
+    </>
   );
 };
 
