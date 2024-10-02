@@ -18,7 +18,13 @@ const NewsCard = ({ article }: Props) => {
       {article.urlToImage && (
         <Box>
           <Card boxShadow="none">
-            <Image src={article.urlToImage} alt={article.title} />
+            <Image
+              w="400px"
+              h="200px"
+              objectFit={"cover"}
+              src={article.urlToImage}
+              alt={article.title}
+            />
             <CardBody p={0} my={2}>
               <Heading fontSize={{ base: "md", md: "xl", lg: "2xl" }}>
                 {truncatedTitle}
