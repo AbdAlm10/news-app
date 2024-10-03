@@ -6,10 +6,13 @@ import NewsGrid from "./components/news-card/NewsGrid";
 import TopicsSelector from "./components/TopicsSelector";
 import SearchNews from "./components/SearchNews";
 
+export interface NewsQuery {
+  topic: string | "genre";
+  searchText: string;
+}
+
 function App() {
-  // State to track the selected topic
-  const [selectedTopic, setSelectedTopic] = useState("general");
-  const [newsBySearch, setNewsBySearch] = useState("");
+  const [newsQuery, setNewsQuery] = useState<NewsQuery>({} as NewsQuery);
 
   return (
     <Grid
@@ -22,20 +25,22 @@ function App() {
         md: "1fr 400px",
       }}
     >
-      {/* Navbar and Topic Selector */}
       <GridItem area="nav">
         <NavBar />
-        <SearchNews onSearch={(searchText) => setNewsBySearch(searchText)} />
+        <SearchNews
+          onSearch={(searchText) => setNewsQuery({ ...newsQuery, searchText })}
+        />
         <TopicsSelector
-          selectedTopic={selectedTopic}
-          onSelectTopic={setSelectedTopic}
+          selectedTopic={newsQuery.topic}
+          onSelectTopic={(topic) => setNewsQuery({ ...newsQuery, topic })}
         />
       </GridItem>
 
-      {/* News Grid */}
       <GridItem area="main1">
-        {/* Pass selectedTopic to NewsGrid */}
-        <NewsGrid searchText={newsBySearch} selectedTopic={selectedTopic} />
+        <NewsGrid
+          searchText={newsQuery.searchText}
+          selectedTopic={newsQuery.topic}
+        />
       </GridItem>
     </Grid>
   );
