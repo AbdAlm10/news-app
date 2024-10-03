@@ -37,7 +37,7 @@ const useNews = (
     const controller = new AbortController();
 
     const endpoint = searchQuery
-      ? `/top-headlines?q=${searchQuery}&apiKey=c6c6837bd42d4bbe8c84d1b477dbdeb7`
+      ? `/everything?q=${searchQuery}&apiKey=c6c6837bd42d4bbe8c84d1b477dbdeb7`
       : `/top-headlines?country=${country}&category=${category}&apiKey=c6c6837bd42d4bbe8c84d1b477dbdeb7`;
 
     setLoading(true);

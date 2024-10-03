@@ -5,10 +5,11 @@ import NewsCard from "./NewsCard";
 
 interface Props {
   selectedTopic: string;
+  searchText: string;
 }
 
-const NewsGrid = ({ selectedTopic }: Props) => {
-  const { news, error, isLoading } = useNews("us", selectedTopic); // Use the selected topic
+const NewsGrid = ({ selectedTopic, searchText }: Props) => {
+  const { news, error, isLoading } = useNews("us", selectedTopic, searchText); // Use the selected topic
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   return (

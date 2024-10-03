@@ -4,10 +4,12 @@ import { useState } from "react";
 import NavBar from "./components/NavBar";
 import NewsGrid from "./components/news-card/NewsGrid";
 import TopicsSelector from "./components/TopicsSelector";
+import SearchNews from "./components/SearchNews";
 
 function App() {
   // State to track the selected topic
   const [selectedTopic, setSelectedTopic] = useState("general");
+  const [newsBySearch, setNewsBySearch] = useState("");
 
   return (
     <Grid
@@ -23,7 +25,7 @@ function App() {
       {/* Navbar and Topic Selector */}
       <GridItem area="nav">
         <NavBar />
-        {/* Pass setSelectedTopic to TopicsSelector */}
+        <SearchNews onSearch={(searchText) => setNewsBySearch(searchText)} />
         <TopicsSelector
           selectedTopic={selectedTopic}
           onSelectTopic={setSelectedTopic}
@@ -33,7 +35,7 @@ function App() {
       {/* News Grid */}
       <GridItem area="main1">
         {/* Pass selectedTopic to NewsGrid */}
-        <NewsGrid selectedTopic={selectedTopic} />
+        <NewsGrid searchText={newsBySearch} selectedTopic={selectedTopic} />
       </GridItem>
     </Grid>
   );
