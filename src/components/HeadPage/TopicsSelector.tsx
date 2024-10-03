@@ -27,7 +27,7 @@ const TopicsSelector = ({ onSelectTopic, selectedTopic }: Props) => {
   const currentSortTopic = topics.find((e) => e === selectedTopic);
 
   return (
-    <Box mt={2} ml={5}>
+    <Box mt={2} ml={3}>
       <Menu>
         <MenuButton
           size="md"

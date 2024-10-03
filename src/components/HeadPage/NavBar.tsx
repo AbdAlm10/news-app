@@ -1,5 +1,5 @@
 import { Box, Center, Image } from "@chakra-ui/react";
-import logo from "../assets/Logo.webp";
+import logo from "../../assets/Logo.webp";
 
 const NavBar = () => {
   return (

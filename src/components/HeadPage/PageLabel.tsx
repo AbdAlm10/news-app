@@ -1,4 +1,4 @@
-import { NewsQuery } from "../App";
+import { NewsQuery } from "../../App";
 import { Heading } from "@chakra-ui/react";
 
 interface Props {
