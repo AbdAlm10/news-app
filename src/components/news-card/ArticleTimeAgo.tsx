@@ -1,5 +1,5 @@
 import { Text } from "@chakra-ui/react";
-import { Article } from "../hooks/useNews";
+import { Article } from "../../hooks/useNews";
 
 interface Props {
   article: Article;

@@ -1,4 +1,4 @@
-import { Article } from "../hooks/useNews";
+import { Article } from "../../hooks/useNews";
 import { Card, CardBody, Heading, Image, Box, Text } from "@chakra-ui/react";
 import ArticleTimeAgo from "./ArticleTimeAgo";
 
