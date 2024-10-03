@@ -14,9 +14,11 @@ const NewsGrid = () => {
           {error}
         </Text>
       )}
-      {isLoding &&
-        skeletons.map((skeleton) => <NewsCardSkeleton key={skeleton} />)}
-      <SimpleGrid spacing={5} p={5} columns={{ base: 1, md: 2, lg: 3 }}>
+
+      <SimpleGrid spacing={10} p={5} columns={{ base: 1, md: 2, lg: 3 }}>
+        {isLoding &&
+          skeletons.map((skeleton) => <NewsCardSkeleton key={skeleton} />)}
+
         {news.map((news) => (
           <NewsCard key={news.title} article={news} />
         ))}
