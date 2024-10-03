@@ -7,7 +7,7 @@ interface Props {
 }
 
 const NewsCard = ({ article }: Props) => {
-  // Truncate the title if it's longer than 50 characters
+  // Truncate the title if it's longer than 75 characters
   const truncatedTitle =
     article.title.length > 75
       ? `${article.title.slice(0, 75)}...`
@@ -19,7 +19,7 @@ const NewsCard = ({ article }: Props) => {
         <Box>
           <Card boxShadow="none">
             <Image
-              w="400px"
+              w="auto"
               h="200px"
               objectFit={"cover"}
               src={article.urlToImage}

@@ -2,6 +2,7 @@ import "./App.css";
 import { Grid, GridItem } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import NewsGrid from "./components/NewsGrid";
+import TopicsSelector from "./components/TopicsSelector";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
     >
       <GridItem area="nav">
         <NavBar />
+        <TopicsSelector />
       </GridItem>
       <GridItem area="main1">
         <NewsGrid />
