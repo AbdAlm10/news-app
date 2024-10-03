@@ -24,7 +24,10 @@ function App() {
       <GridItem area="nav">
         <NavBar />
         {/* Pass setSelectedTopic to TopicsSelector */}
-        <TopicsSelector onSelectedTopic={setSelectedTopic} />
+        <TopicsSelector
+          selectedTopic={selectedTopic}
+          onSelectTopic={setSelectedTopic}
+        />
       </GridItem>
 
       {/* News Grid */}

@@ -8,11 +8,12 @@ import {
 } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 
-const TopicsSelector = ({
-  onSelectedTopic,
-}: {
-  onSelectedTopic: (topic: string) => void;
-}) => {
+interface Props {
+  onSelectTopic: (topic: string) => void;
+  selectedTopic: string;
+}
+
+const TopicsSelector = ({ onSelectTopic, selectedTopic }: Props) => {
   const topics = [
     "business",
     "entertainment",
@@ -23,6 +24,8 @@ const TopicsSelector = ({
     "technology",
   ];
 
+  const currentSortTopic = topics.find((e) => e === selectedTopic);
+
   return (
     <Box mt={2} ml={5}>
       <Menu>
@@ -32,11 +35,11 @@ const TopicsSelector = ({
           bg="white"
           rightIcon={<BsChevronDown />}
         >
-          Topics
+          {currentSortTopic ? currentSortTopic : "topics"}
         </MenuButton>
         <MenuList>
           {topics.map((topic) => (
-            <MenuItem onClick={() => onSelectedTopic(topic)} key={topic}>
+            <MenuItem onClick={() => onSelectTopic(topic)} key={topic}>
               {topic}
             </MenuItem>
           ))}
