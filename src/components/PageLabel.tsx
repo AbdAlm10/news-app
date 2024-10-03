@@ -11,7 +11,11 @@ const PageLabel = ({ newsQuery }: Props) => {
     : "Top headlines";
 
   return (
-    <Heading mr={{ base: 5, md: 4, lg: 5 }} size={{ base: "md", md: "lg" }}>
+    <Heading
+      fontFamily={"Montserrat"}
+      mr={{ base: 5, md: 4, lg: 5 }}
+      size={{ base: "md", md: "lg" }}
+    >
       {heading}
     </Heading>
   );

@@ -30,7 +30,9 @@ const TopicsSelector = ({ onSelectTopic, selectedTopic }: Props) => {
     <Box mt={2} ml={5}>
       <Menu>
         <MenuButton
-          size="sm"
+          size="md"
+          fontFamily="Montserrat"
+          fontWeight="bold"
           as={Button}
           bg="white"
           rightIcon={<BsChevronDown />}
