@@ -8,7 +8,11 @@ import {
 } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 
-const TopicsSelector = () => {
+const TopicsSelector = ({
+  onSelectedTopic,
+}: {
+  onSelectedTopic: (topic: string) => void;
+}) => {
   const topics = [
     "business",
     "entertainment",
@@ -32,7 +36,7 @@ const TopicsSelector = () => {
         </MenuButton>
         <MenuList>
           {topics.map((topic) => (
-            <MenuItem onClick={() => console.log(topic)} key={topic}>
+            <MenuItem onClick={() => onSelectedTopic(topic)} key={topic}>
               {topic}
             </MenuItem>
           ))}

@@ -24,34 +24,41 @@ interface NewsResponse {
   articles: Article[];
 }
 
-const useNews = () => {
+const useNews = (
+  country: string = "us",
+  category: string = "general",
+  searchQuery?: string
+) => {
   const [news, setNews] = useState<Article[]>([]);
-  const [error, setError] = useState([]);
-  const [isLoding, setLoding] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
-    const contoller = new AbortController();
+    const controller = new AbortController();
 
-    setLoding(true);
+    const endpoint = searchQuery
+      ? `/top-headlines?q=${searchQuery}&apiKey=c6c6837bd42d4bbe8c84d1b477dbdeb7`
+      : `/top-headlines?country=${country}&category=${category}&apiKey=c6c6837bd42d4bbe8c84d1b477dbdeb7`;
+
+    setLoading(true);
+    setError(null);
+
     apiClient
-      .get<NewsResponse>(
-        "/top-headlines?country=us&apiKey=c6c6837bd42d4bbe8c84d1b477dbdeb7",
-        { signal: contoller.signal }
-      )
+      .get<NewsResponse>(endpoint, { signal: controller.signal })
       .then((res) => {
         setNews(res.data.articles);
-        setLoding(false);
+        setLoading(false);
       })
       .catch((err) => {
         if (err instanceof CanceledError) return;
         setError(err.message);
-        setLoding(false);
+        setLoading(false);
       });
 
-    return () => contoller.abort();
-  }, []);
+    return () => controller.abort();
+  }, [country, category, searchQuery]);
 
-  return { news, error, isLoding };
+  return { news, error, isLoading };
 };
 
 export default useNews;
