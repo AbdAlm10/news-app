@@ -1,6 +1,4 @@
 import { Article } from "../../hooks/useNews";
-import { Card, CardBody, Heading, Image, Box, Text } from "@chakra-ui/react";
-import ArticleTimeAgo from "./ArticleTimeAgo";
 import noImage from "../../assets/no-image-placeholder.webp";
 import NewsContainer from "./NewsContainer";
 
@@ -18,6 +16,7 @@ const NewsCard = ({ article }: Props) => {
           article={article}
         />
       ) : (
+        //news card whithout images
         <NewsContainer src={noImage} alt={""} article={article} />
       )}
     </>

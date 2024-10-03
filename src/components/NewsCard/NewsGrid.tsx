@@ -1,4 +1,4 @@
-import { SimpleGrid, Text } from "@chakra-ui/react";
+import { Center, Heading, SimpleGrid, Text } from "@chakra-ui/react";
 import useNews from "../../hooks/useNews";
 import NewsCardSkeleton from "./NewsCardSkeleton";
 import NewsCard from "./NewsCard";
@@ -11,6 +11,13 @@ interface Props {
 const NewsGrid = ({ selectedTopic, searchText }: Props) => {
   const { news, error, isLoading } = useNews("us", selectedTopic, searchText); // Use the selected topic
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  if (news.length == 0)
+    return (
+      <Center justifyContent="center" alignItems="center">
+        <Heading color="gray.400">no results</Heading>
+      </Center>
+    );
 
   return (
     <>
