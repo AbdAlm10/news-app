@@ -1,10 +1,11 @@
 import "./App.css";
-import { Grid, GridItem } from "@chakra-ui/react";
+import { Grid, GridItem, HStack } from "@chakra-ui/react";
 import { useState } from "react";
 import NavBar from "./components/NavBar";
 import NewsGrid from "./components/news-card/NewsGrid";
 import TopicsSelector from "./components/TopicsSelector";
 import SearchNews from "./components/SearchNews";
+import PageLabel from "./components/PageLabel";
 
 export interface NewsQuery {
   topic: string | "genre";
@@ -30,10 +31,13 @@ function App() {
         <SearchNews
           onSearch={(searchText) => setNewsQuery({ ...newsQuery, searchText })}
         />
-        <TopicsSelector
-          selectedTopic={newsQuery.topic}
-          onSelectTopic={(topic) => setNewsQuery({ ...newsQuery, topic })}
-        />
+        <HStack justifyContent="space-between">
+          <TopicsSelector
+            selectedTopic={newsQuery.topic}
+            onSelectTopic={(topic) => setNewsQuery({ ...newsQuery, topic })}
+          />
+          <PageLabel newsQuery={newsQuery} />
+        </HStack>
       </GridItem>
 
       <GridItem area="main1">
