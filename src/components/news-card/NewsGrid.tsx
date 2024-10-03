@@ -1,5 +1,5 @@
 import { SimpleGrid, Text } from "@chakra-ui/react";
-import useNews from "../hooks/useNews";
+import useNews from "../../hooks/useNews";
 import NewsCard from "./NewsCard";
 import NewsCardSkeleton from "./NewsCardSkeleton";
 

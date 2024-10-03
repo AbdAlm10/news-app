@@ -1,7 +1,7 @@
 import "./App.css";
 import { Grid, GridItem } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
-import NewsGrid from "./components/NewsGrid";
+import NewsGrid from "./components/news-card/NewsGrid";
 import TopicsSelector from "./components/TopicsSelector";
 
 function App() {
