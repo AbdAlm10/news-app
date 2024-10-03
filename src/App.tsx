@@ -1,11 +1,11 @@
 import "./App.css";
 import { Grid, GridItem, HStack } from "@chakra-ui/react";
 import { useState } from "react";
-import NavBar from "./components/PageHead/NavBar";
+import NavBar from "./components/HeadPage/NavBar";
 import NewsGrid from "./components/NewsCard/NewsGrid";
-import TopicsSelector from "./components/PageHead/TopicsSelector";
-import SearchNews from "./components/PageHead/SearchNews";
-import PageLabel from "./components/PageHead/PageLabel";
+import TopicsSelector from "./components/HeadPage/TopicsSelector";
+import SearchNews from "./components/HeadPage/SearchNews";
+import PageLabel from "./components/HeadPage/PageLabel";
 
 export interface NewsQuery {
   topic: string | "genre";
