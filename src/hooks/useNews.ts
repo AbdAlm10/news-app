@@ -13,11 +13,7 @@ interface NewsResponse {
   articles: Article[];
 }
 
-const useNews = (
-  country: string = "us",
-  category: string = "general",
-  searchQuery?: string
-) => {
+const useNews = (category: string = "general", searchQuery?: string) => {
   const [news, setNews] = useState<Article[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setLoading] = useState(false);
@@ -27,7 +23,7 @@ const useNews = (
 
     const endpoint = searchQuery
       ? `/search?q=${searchQuery}&apikey=3e752557304a4f7a03b7e55d5f4b0ac5`
-      : `/top-headlines?category=${category}&lang=en&country=${country}&max=10&apikey=3e752557304a4f7a03b7e55d5f4b0ac5`;
+      : `/top-headlines?category=${category}&lang=en&country=us&max=10&apikey=3e752557304a4f7a03b7e55d5f4b0ac5`;
 
     setLoading(true);
     setError(null);
@@ -45,7 +41,7 @@ const useNews = (
       });
 
     return () => controller.abort();
-  }, [country, category, searchQuery]);
+  }, [category, searchQuery]);
 
   return { news, error, isLoading };
 };
