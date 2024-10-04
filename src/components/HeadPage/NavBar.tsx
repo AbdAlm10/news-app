@@ -13,7 +13,7 @@ const NavBar = () => {
     <Box
       p={2}
       borderBottomColor="gray.200"
-      borderTopColor="black"
+      borderTopColor={colorMode === "dark" ? "white" : "black"}
       borderTopWidth={7}
       borderBottomWidth={1}
     >
