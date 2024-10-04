@@ -1,13 +1,15 @@
-import { Card, CardBody, Skeleton, SkeletonText } from "@chakra-ui/react";
+import { Box, Card, CardBody, Skeleton, SkeletonText } from "@chakra-ui/react";
 
 const NewsCardSkeleton = () => {
   return (
-    <Card p={5} shadow={0}>
-      <Skeleton h="200px" />
-      <CardBody>
-        <SkeletonText />
-      </CardBody>
-    </Card>
+    <Box>
+      <Card boxShadow="none">
+        <Skeleton w="auto" h="200px" />
+        <CardBody p={0} my={2}>
+          <SkeletonText />
+        </CardBody>
+      </Card>
+    </Box>
   );
 };
 
