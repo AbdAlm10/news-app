@@ -1,4 +1,4 @@
-import { Box, Center, DarkMode, Image, useColorMode } from "@chakra-ui/react";
+import { Box, Center, Image, useColorMode } from "@chakra-ui/react";
 import logo from "../../assets/Logo.webp";
 import LogoWhite from "../../assets/LogoWhite.webp";
 
