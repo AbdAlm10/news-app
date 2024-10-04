@@ -15,13 +15,15 @@ interface Props {
 
 const TopicsSelector = ({ onSelectTopic, selectedTopic }: Props) => {
   const topics = [
-    "business",
-    "entertainment",
     "general",
-    "health",
-    "science",
-    "sports",
+    "world",
+    "nation",
+    "business",
     "technology",
+    "entertainment",
+    "sports",
+    "science",
+    "health",
   ];
 
   const currentSortTopic = topics.find((e) => e === selectedTopic);
