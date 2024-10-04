@@ -1,4 +1,4 @@
-import { Center, Heading, SimpleGrid, Text } from "@chakra-ui/react";
+import { SimpleGrid, Text } from "@chakra-ui/react";
 import useNews from "../../hooks/useNews";
 import NewsCardSkeleton from "./NewsCardSkeleton";
 import NewsCard from "./NewsCard";
