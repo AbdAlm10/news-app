@@ -29,14 +29,13 @@ const TopicsSelector = ({ onSelectTopic, selectedTopic }: Props) => {
   const currentSortTopic = topics.find((e) => e === selectedTopic);
 
   return (
-    <Box mt={2} ml={3}>
+    <Box mt={2} ml={5}>
       <Menu>
         <MenuButton
           size="md"
           fontFamily="Montserrat"
           fontWeight="bold"
           as={Button}
-          bg="white"
           rightIcon={<BsChevronDown />}
         >
           {currentSortTopic ? currentSortTopic : "topics"}

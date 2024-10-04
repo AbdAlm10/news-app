@@ -15,7 +15,7 @@ const NewsContainer = ({ src, alt, article }: Props) => {
       : article.title;
   return (
     <Box>
-      <Card boxShadow="none">
+      <Card boxShadow="none" bg="none">
         <Image w="auto" h="200px" objectFit={"cover"} src={src} alt={alt} />
         <CardBody p={0} my={2}>
           <Heading

@@ -1,4 +1,4 @@
-import { Text } from "@chakra-ui/react";
+import { Text, useColorMode } from "@chakra-ui/react";
 import { Article } from "../../hooks/useNews";
 
 interface Props {
@@ -6,6 +6,7 @@ interface Props {
 }
 
 const ArticleTimeAgo = ({ article }: Props) => {
+  const { colorMode } = useColorMode();
   const fullArticleTime: string = article.publishedAt;
 
   // Parse the article's full time into a Date object
@@ -42,7 +43,7 @@ const ArticleTimeAgo = ({ article }: Props) => {
       fontWeight="400"
       fontSize={15}
       mt={1}
-      color="gray.600"
+      color={colorMode === "dark" ? "gray.400" : "gray.600"}
     >
       {timeAgo}
     </Text>
