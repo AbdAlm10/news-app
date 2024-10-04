@@ -9,9 +9,9 @@ interface Props {
 const NewsCard = ({ article }: Props) => {
   return (
     <>
-      {article.urlToImage ? (
+      {article.image ? (
         <NewsContainer
-          src={article.urlToImage}
+          src={article.image}
           alt={article.title}
           article={article}
         />

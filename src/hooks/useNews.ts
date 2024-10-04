@@ -2,25 +2,14 @@ import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
 
-interface ArticleSource {
-  id: string | null;
-  name: string;
-}
-
 export interface Article {
-  source: ArticleSource;
-  author: string;
   title: string;
-  description: string;
-  url: string;
-  urlToImage: string;
+  image: string;
   publishedAt: string;
-  content: string | null;
 }
 
 interface NewsResponse {
-  status: string;
-  totalResults: number;
+  totalArticles: number;
   articles: Article[];
 }
 
@@ -37,8 +26,8 @@ const useNews = (
     const controller = new AbortController();
 
     const endpoint = searchQuery
-      ? `/everything?q=${searchQuery}&apiKey=c6c6837bd42d4bbe8c84d1b477dbdeb7`
-      : `/top-headlines?country=${country}&category=${category}&apiKey=c6c6837bd42d4bbe8c84d1b477dbdeb7`;
+      ? `/search?q=${searchQuery}&apikey=3e752557304a4f7a03b7e55d5f4b0ac5`
+      : `/top-headlines?category=${category}&lang=en&country=${country}&max=10&apikey=3e752557304a4f7a03b7e55d5f4b0ac5`;
 
     setLoading(true);
     setError(null);
