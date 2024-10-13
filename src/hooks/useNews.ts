@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import apiClient from "../services/api-client";
 import { API_KEY } from "../services/constants";
+import APIClient from "../services/api-client";
 
 export interface Article {
   title: string;
@@ -8,7 +9,7 @@ export interface Article {
   publishedAt: string;
 }
 
-interface NewsResponse<T> {
+export interface NewsResponse<T> {
   totalArticles: number;
   articles: T[];
 }
@@ -18,12 +19,11 @@ const useNews = (category: string = "general", searchQuery?: string) => {
     ? `/search?q=${searchQuery}&apikey=${API_KEY}`
     : `/top-headlines?category=${category}&country=us&apikey=${API_KEY}`;
 
+  const apiClient = new APIClient<Article>(endpoint);
+
   return useQuery({
     queryKey: ["news", category, searchQuery],
-    queryFn: async () => {
-      const response = await apiClient.get<NewsResponse<Article>>(endpoint);
-      return response.data.articles; // Return articles directly
-    },
+    queryFn: apiClient.getAll,
     staleTime: 5 * 60 * 1000, //5m
   });
 };
