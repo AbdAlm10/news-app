@@ -9,14 +9,14 @@ interface Props {
 }
 
 const NewsGrid = ({ selectedTopic, searchText }: Props) => {
-  const { news, error, isLoading } = useNews(selectedTopic, searchText); // Use the selected topic
+  const { data: news, error, isLoading } = useNews(selectedTopic, searchText); // Use the selected topic
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   return (
     <>
       {error && (
         <Text textAlign="center" color="tomato">
-          {error}
+          {(error as Error).message}
         </Text>
       )}
 
@@ -24,8 +24,8 @@ const NewsGrid = ({ selectedTopic, searchText }: Props) => {
         {isLoading &&
           skeletons.map((skeleton) => <NewsCardSkeleton key={skeleton} />)}
 
-        {news.map((news) => (
-          <NewsCard key={news.title} article={news} />
+        {news?.map((news, index) => (
+          <NewsCard key={index} article={news} />
         ))}
       </SimpleGrid>
     </>

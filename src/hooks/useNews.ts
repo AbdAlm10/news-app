@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import apiClient from "../services/api-client";
-import { CanceledError } from "axios";
 import { API_KEY } from "../services/constants";
 
 export interface Article {
@@ -9,42 +8,24 @@ export interface Article {
   publishedAt: string;
 }
 
-interface NewsResponse {
+interface NewsResponse<T> {
   totalArticles: number;
-  articles: Article[];
+  articles: T[];
 }
 
 const useNews = (category: string = "general", searchQuery?: string) => {
-  const [news, setNews] = useState<Article[]>([]);
-  const [error, setError] = useState<string | null>(null);
-  const [isLoading, setLoading] = useState(false);
+  const endpoint = searchQuery
+    ? `/search?q=${searchQuery}&apikey=${API_KEY}`
+    : `/top-headlines?category=${category}&country=us&apikey=${API_KEY}`;
 
-  useEffect(() => {
-    const controller = new AbortController();
-
-    const endpoint = searchQuery
-      ? `/search?q=${searchQuery}&apikey=${API_KEY}`
-      : `/top-headlines?category=${category}&country=us&apikey=${API_KEY}`;
-
-    setLoading(true);
-    setError(null);
-
-    apiClient
-      .get<NewsResponse>(endpoint, { signal: controller.signal })
-      .then((res) => {
-        setNews(res.data.articles);
-        setLoading(false);
-      })
-      .catch((err) => {
-        if (err instanceof CanceledError) return;
-        setError(err.message);
-        setLoading(false);
-      });
-
-    return () => controller.abort();
-  }, [category, searchQuery]);
-
-  return { news, error, isLoading };
+  return useQuery({
+    queryKey: ["news", category, searchQuery],
+    queryFn: async () => {
+      const response = await apiClient.get<NewsResponse<Article>>(endpoint);
+      return response.data.articles; // Return articles directly
+    },
+    staleTime: 5 * 60 * 1000, //5m
+  });
 };
 
 export default useNews;
