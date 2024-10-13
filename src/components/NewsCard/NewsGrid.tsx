@@ -2,13 +2,11 @@ import { SimpleGrid, Text } from "@chakra-ui/react";
 import useNews from "../../hooks/useNews";
 import NewsCardSkeleton from "./NewsCardSkeleton";
 import NewsCard from "./NewsCard";
+import useNewsQueryStore from "../../store";
 
-interface Props {
-  selectedTopic: string;
-  searchText: string;
-}
-
-const NewsGrid = ({ selectedTopic, searchText }: Props) => {
+const NewsGrid = () => {
+  const searchText = useNewsQueryStore((s) => s.newsQuery.searchText);
+  const selectedTopic = useNewsQueryStore((s) => s.newsQuery.topic);
   const { data: news, error, isLoading } = useNews(selectedTopic, searchText); // Use the selected topic
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 

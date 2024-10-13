@@ -1,11 +1,9 @@
-import { NewsQuery } from "../../App";
 import { Heading } from "@chakra-ui/react";
+import useNewsQueryStore from "../../store";
 
-interface Props {
-  newsQuery: NewsQuery;
-}
+const PageLabel = () => {
+  const newsQuery = useNewsQueryStore((s) => s.newsQuery);
 
-const PageLabel = ({ newsQuery }: Props) => {
   const heading = newsQuery.searchText
     ? `search: ${newsQuery.searchText}`
     : "Top headlines";

@@ -1,17 +1,15 @@
 import { Box, Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { FormEvent, useRef } from "react";
 import { BsSearch } from "react-icons/bs";
+import useNewsQueryStore from "../../store";
 
-interface Props {
-  onSearch: (searchText: string) => void;
-}
-
-const SearchNews = ({ onSearch }: Props) => {
+const SearchNews = () => {
   const ref = useRef<HTMLInputElement>(null);
+  const setSearchText = useNewsQueryStore((s) => s.setSearchText);
 
   const handleSearching = (e: FormEvent) => {
     e.preventDefault();
-    if (ref.current) onSearch(ref.current.value);
+    if (ref.current) setSearchText(ref.current.value);
   };
 
   return (

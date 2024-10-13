@@ -7,13 +7,12 @@ import {
   MenuList,
 } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
+import useNewsQueryStore from "../../store";
 
-interface Props {
-  onSelectTopic: (topic: string) => void;
-  selectedTopic: string;
-}
+const TopicsSelector = () => {
+  const selectedTopic = useNewsQueryStore((s) => s.newsQuery.topic);
+  const onSelectTopic = useNewsQueryStore((s) => s.setSelectedTopic);
 
-const TopicsSelector = ({ onSelectTopic, selectedTopic }: Props) => {
   const topics = [
     "general",
     "world",
