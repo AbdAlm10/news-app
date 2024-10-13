@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import apiClient from "../services/api-client";
 import { API_KEY } from "../services/constants";
 import APIClient from "../services/api-client";
+import ms from "ms";
 
 export interface Article {
   title: string;
@@ -24,7 +24,7 @@ const useNews = (category: string = "general", searchQuery?: string) => {
   return useQuery({
     queryKey: ["news", category, searchQuery],
     queryFn: apiClient.getAll,
-    staleTime: 5 * 60 * 1000, //5m
+    staleTime: ms("5m"),
   });
 };
 
