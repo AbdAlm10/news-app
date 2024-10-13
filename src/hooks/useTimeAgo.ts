@@ -15,13 +15,13 @@ const useTimeAgo = (fullTime: string) => {
     const timeDifferenceMonths: number = Math.floor(timeDifferenceDays / 30); // Approximation
 
     if (timeDifferenceMinutes < 60) {
-      return `${timeDifferenceMinutes} M ago`;
+      return `${timeDifferenceMinutes}M ago`;
     } else if (timeDifferenceHours < 24) {
-      return `${timeDifferenceHours} H ago`;
+      return `${timeDifferenceHours}H ago`;
     } else if (timeDifferenceDays < 30) {
-      return `${timeDifferenceDays} D ago`;
+      return `${timeDifferenceDays}D ago`;
     } else {
-      return `${timeDifferenceMonths} M ago`;
+      return `${timeDifferenceMonths}M ago`;
     }
   }, [fullTime]);
 };

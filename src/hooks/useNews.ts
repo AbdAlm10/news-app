@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
+import { API_KEY } from "../services/constants";
 
 export interface Article {
   title: string;
@@ -22,8 +23,8 @@ const useNews = (category: string = "general", searchQuery?: string) => {
     const controller = new AbortController();
 
     const endpoint = searchQuery
-      ? `/search?q=${searchQuery}&apikey=3e752557304a4f7a03b7e55d5f4b0ac5`
-      : `/top-headlines?category=${category}&lang=en&country=us&max=10&apikey=3e752557304a4f7a03b7e55d5f4b0ac5`;
+      ? `/search?q=${searchQuery}&apikey=${API_KEY}`
+      : `/top-headlines?category=${category}&country=us&apikey=${API_KEY}`;
 
     setLoading(true);
     setError(null);

@@ -17,7 +17,7 @@ const NewsCard = ({ article }: Props) => {
         />
       ) : (
         //news card whithout images
-        <NewsContainer src={noImage} alt={""} article={article} />
+        <NewsContainer src={noImage} article={article} />
       )}
     </>
   );
