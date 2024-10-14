@@ -1,5 +1,7 @@
 import { Grid, GridItem } from "@chakra-ui/react";
 import NewsGrid from "../components/NewsCard/NewsGrid";
+import SearchNews from "../components/HeadPage/SearchNews";
+import TopicsSelector from "../components/HeadPage/TopicsSelector";
 
 const HomePage = () => {
   return (
@@ -14,6 +16,8 @@ const HomePage = () => {
       }}
     >
       <GridItem area="main1">
+        <SearchNews />
+        <TopicsSelector />
         <NewsGrid />
       </GridItem>
     </Grid>
