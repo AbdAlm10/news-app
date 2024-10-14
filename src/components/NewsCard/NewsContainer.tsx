@@ -1,6 +1,7 @@
 import { Box, Card, CardBody, Heading, Image } from "@chakra-ui/react";
 import ArticleTimeAgo from "./ArticleTimeAgo";
 import { Article } from "../../hooks/useNews";
+import { Link } from "react-router-dom";
 
 interface Props {
   src: string;
@@ -15,18 +16,27 @@ const NewsContainer = ({ src, alt, article }: Props) => {
       : article.title;
   return (
     <Box>
-      <Card boxShadow="none" bg="none">
-        <Image w="auto" h="200px" objectFit={"cover"} src={src} alt={alt} />
-        <CardBody p={0} my={2}>
-          <Heading
-            fontFamily={"Libre Caslon Text serif"}
-            fontSize={{ base: "lg", md: "xl", lg: "2xl" }}
-          >
-            {truncatedTitle}
-          </Heading>
-          <ArticleTimeAgo article={article} />
-        </CardBody>
-      </Card>
+      <Link to={"/news/" + article.publishedAt}>
+        <Card
+          _hover={{
+            transform: "scale(1.03)",
+            transition: "transform .15s  ease-in",
+          }}
+          boxShadow="none"
+          bg="none"
+        >
+          <Image w="auto" h="200px" objectFit={"cover"} src={src} alt={alt} />
+          <CardBody p={0} my={2}>
+            <Heading
+              fontFamily={"Libre Caslon Text serif"}
+              fontSize={{ base: "lg", md: "xl", lg: "2xl" }}
+            >
+              {truncatedTitle}
+            </Heading>
+            <ArticleTimeAgo article={article} />
+          </CardBody>
+        </Card>
+      </Link>
     </Box>
   );
 };
