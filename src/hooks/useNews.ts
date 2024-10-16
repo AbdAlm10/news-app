@@ -4,10 +4,11 @@ import ms from "ms";
 
 export interface Article {
   title: string;
-  image: string;
-  publishedAt: string;
   description: string;
   content: string;
+  url: string;
+  image: string;
+  publishedAt: string;
 }
 
 export interface NewsResponse<T> {
