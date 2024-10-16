@@ -6,6 +6,8 @@ export interface Article {
   title: string;
   image: string;
   publishedAt: string;
+  description: string;
+  content: string;
 }
 
 export interface NewsResponse<T> {
