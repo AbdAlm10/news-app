@@ -18,7 +18,7 @@ export interface NewsResponse<T> {
 const useNews = (category: string = "general", searchQuery?: string) => {
   const endpoint = searchQuery
     ? `/search?q=${searchQuery}`
-    : `/top-headlines?category=${category}`;
+    : `/top-headlines?category=${category}&lang=en`;
 
   const apiClient = new APIClient<Article>(endpoint);
 
