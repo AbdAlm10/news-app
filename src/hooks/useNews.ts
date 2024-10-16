@@ -9,6 +9,7 @@ export interface Article {
   url: string;
   image: string;
   publishedAt: string;
+  source: { name: string };
 }
 
 export interface NewsResponse<T> {

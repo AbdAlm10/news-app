@@ -1,20 +1,20 @@
 import { useParams } from "react-router-dom";
 import {
-  Box,
   Text,
   Heading,
   Image,
   SimpleGrid,
   GridItem,
   Spinner,
-  Button,
   Link,
   HStack,
   Center,
+  VStack,
+  Box,
 } from "@chakra-ui/react";
 import useNews from "../hooks/useNews";
-import { FaExternalLinkSquareAlt } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
+import ArticleTimeAgo from "../components/NewsCard/ArticleTimeAgo";
 
 const NewsDetailPage = () => {
   const { publishAt } = useParams();
@@ -58,6 +58,11 @@ const NewsDetailPage = () => {
             <FiExternalLink size={20} />
           </HStack>
         </Link>
+
+        <Box mt={10}>
+          <Text>{article.source.name}</Text>
+          <ArticleTimeAgo article={article} />
+        </Box>
       </GridItem>
     </SimpleGrid>
   );
