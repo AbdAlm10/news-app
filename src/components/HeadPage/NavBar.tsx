@@ -1,6 +1,7 @@
 import { Box, Center, Image, useColorMode } from "@chakra-ui/react";
 import logo from "../../assets/Logo.webp";
 import LogoWhite from "../../assets/LogoWhite.webp";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const { colorMode } = useColorMode();
@@ -18,11 +19,13 @@ const NavBar = () => {
       borderBottomWidth={1}
     >
       <Center>
-        {colorMode === "dark" ? (
-          <Image src={LogoWhite} w={sizes.w} h={sizes.h} />
-        ) : (
-          <Image src={logo} w={sizes.w} h={sizes.h} />
-        )}
+        <Link to="/">
+          {colorMode === "dark" ? (
+            <Image src={LogoWhite} w={sizes.w} h={sizes.h} />
+          ) : (
+            <Image src={logo} w={sizes.w} h={sizes.h} />
+          )}
+        </Link>
       </Center>
     </Box>
   );

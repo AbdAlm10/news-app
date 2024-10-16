@@ -9,7 +9,6 @@ import {
   Link,
   HStack,
   Center,
-  VStack,
   Box,
 } from "@chakra-ui/react";
 import useNews from "../hooks/useNews";
@@ -32,7 +31,7 @@ const NewsDetailPage = () => {
       : article.content;
 
   return (
-    <SimpleGrid p={5} columns={{ base: 1, md: 2 }} spacing={5}>
+    <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
       <GridItem>
         <Center>
           <Image
