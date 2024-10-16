@@ -2,12 +2,10 @@ import { SimpleGrid, Text } from "@chakra-ui/react";
 import useNews from "../../hooks/useNews";
 import NewsCardSkeleton from "./NewsCardSkeleton";
 import NewsCard from "./NewsCard";
-import useNewsQueryStore from "../../store";
 
 const NewsGrid = () => {
-  const searchText = useNewsQueryStore((s) => s.newsQuery.searchText);
-  const selectedTopic = useNewsQueryStore((s) => s.newsQuery.topic);
-  const { data: news, error, isLoading } = useNews(selectedTopic, searchText); // Use the selected topic
+  const { data: news, error, isLoading } = useNews(); // Ensure this line matches the useNews definition
+
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   return (
@@ -22,8 +20,8 @@ const NewsGrid = () => {
         {isLoading &&
           skeletons.map((skeleton) => <NewsCardSkeleton key={skeleton} />)}
 
-        {news?.map((news, index) => (
-          <NewsCard key={index} article={news} />
+        {news?.map((article) => (
+          <NewsCard key={article.publishedAt} article={article} /> // Use a unique key
         ))}
       </SimpleGrid>
     </>
