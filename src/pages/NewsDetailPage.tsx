@@ -45,21 +45,26 @@ const NewsDetailPage = () => {
       </GridItem>
 
       <GridItem>
-        <Heading fontSize="2xl" mb={3}>
+        <Heading fontFamily={"Libre Caslon Text serif"} fontSize="2xl" mb={3}>
           {article.title}
         </Heading>
-        <Text mb={3}>{article?.description}</Text>
-        <Text>{truncatedContent}</Text>
+
+        <Box fontFamily={"Montserrat"} fontWeight="500">
+          <Text mb={3}>{article?.description}</Text>
+          <Text>{truncatedContent}</Text>
+        </Box>
 
         <Link href={article.url} isExternal>
-          <HStack mt={5} color="gray.300">
-            <Text fontWeight="bold">Read All Article</Text>
+          <HStack mt={5} color="gray.500">
+            <Text fontFamily={"Montserrat"} fontWeight="bold">
+              Read All Article
+            </Text>
             <FiExternalLink size={20} />
           </HStack>
         </Link>
 
         <Box mt={10}>
-          <Text>{article.source.name}</Text>
+          <Text fontFamily={"Montserrat"}>{article.source.name}</Text>
           <ArticleTimeAgo article={article} />
         </Box>
       </GridItem>
