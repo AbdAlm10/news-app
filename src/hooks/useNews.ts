@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import APIClient from "../services/api-client";
 import ms from "ms";
+import useNewsQueryStore from "../store";
 
 export interface Article {
   title: string;
@@ -17,15 +18,16 @@ export interface NewsResponse<T> {
   articles: T[];
 }
 
-const useNews = (category: string = "general", searchQuery?: string) => {
-  const endpoint = searchQuery
-    ? `/search?q=${searchQuery}`
-    : `/top-headlines?category=${category}&lang=en`;
+const useNews = () => {
+  const { topic, searchText } = useNewsQueryStore((s) => s.newsQuery);
+  const endpoint = searchText
+    ? `/search?q=${searchText}`
+    : `/top-headlines?category=${topic}&lang=en`;
 
   const apiClient = new APIClient<Article>(endpoint);
 
   return useQuery({
-    queryKey: ["news", category, searchQuery],
+    queryKey: ["news", topic, searchText],
     queryFn: apiClient.getAll,
     staleTime: ms("5m"),
   });

@@ -12,12 +12,14 @@ interface NewsQueryStore {
 }
 
 const useNewsQueryStore = create<NewsQueryStore>((set) => ({
-  newsQuery: {},
-  setSearchText: (searchText) => set(() => ({ newsQuery: { searchText } })),
+  newsQuery: { topic: "general", searchText: "" }, // Default topic set
+  setSearchText: (searchText) =>
+    set((state) => ({
+      newsQuery: { ...state.newsQuery, searchText },
+    })),
   setSelectedTopic: (topic) =>
-    set((selectedTopic) => ({
-      newsQuery: { ...selectedTopic.newsQuery, topic },
+    set((state) => ({
+      newsQuery: { ...state.newsQuery, topic, searchText: "" }, // Reset search text on topic change
     })),
 }));
-
 export default useNewsQueryStore;

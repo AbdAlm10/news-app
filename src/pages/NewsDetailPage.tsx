@@ -18,13 +18,13 @@ import fonts from "../assets/fonts/fonts";
 
 const NewsDetailPage = () => {
   const { publishAt } = useParams();
-  const { data: news, error, isLoading } = useNews();
+  const { data: news, isLoading } = useNews();
 
   // Find the article based on the publishedAt parameter
   const article = news?.find((article) => article.publishedAt === publishAt);
 
   if (isLoading) return <Spinner />;
-  if (!article) throw error;
+  if (!article) throw Error;
 
   const truncatedContent =
     article.content.length > 250
