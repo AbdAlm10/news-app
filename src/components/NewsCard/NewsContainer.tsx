@@ -2,6 +2,7 @@ import { Box, Card, CardBody, Heading, Image } from "@chakra-ui/react";
 import ArticleTimeAgo from "./ArticleTimeAgo";
 import { Article } from "../../hooks/useNews";
 import { Link } from "react-router-dom";
+import fonts from "../../assets/fonts/fonts";
 
 interface Props {
   src: string;
@@ -28,7 +29,7 @@ const NewsContainer = ({ src, alt, article }: Props) => {
           <Image w="auto" h="200px" objectFit={"cover"} src={src} alt={alt} />
           <CardBody p={0} my={2}>
             <Heading
-              fontFamily={"Libre Caslon Text serif"}
+              fontFamily={fonts.mainFont}
               fontSize={{ base: "lg", md: "xl", lg: "2xl" }}
             >
               {truncatedTitle}

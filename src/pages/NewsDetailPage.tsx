@@ -14,6 +14,7 @@ import {
 import useNews from "../hooks/useNews";
 import { FiExternalLink } from "react-icons/fi";
 import ArticleTimeAgo from "../components/NewsCard/ArticleTimeAgo";
+import fonts from "../assets/fonts/fonts";
 
 const NewsDetailPage = () => {
   const { publishAt } = useParams();
@@ -45,18 +46,18 @@ const NewsDetailPage = () => {
       </GridItem>
 
       <GridItem>
-        <Heading fontFamily={"Libre Caslon Text serif"} fontSize="2xl" mb={3}>
+        <Heading fontFamily={fonts.mainFont} fontSize="2xl" mb={3}>
           {article.title}
         </Heading>
 
-        <Box fontFamily={"Montserrat"} fontWeight="500">
+        <Box fontFamily={fonts.secondaryFont} fontWeight="500">
           <Text mb={3}>{article?.description}</Text>
           <Text>{truncatedContent}</Text>
         </Box>
 
         <Link href={article.url} isExternal>
           <HStack mt={5} color="gray.500">
-            <Text fontFamily={"Montserrat"} fontWeight="bold">
+            <Text fontFamily={fonts.secondaryFont} fontWeight="bold">
               Read All Article
             </Text>
             <FiExternalLink size={20} />
@@ -64,7 +65,7 @@ const NewsDetailPage = () => {
         </Link>
 
         <Box mt={10}>
-          <Text fontFamily={"Montserrat"}>{article.source.name}</Text>
+          <Text fontFamily={fonts.secondaryFont}>{article.source.name}</Text>
           <ArticleTimeAgo article={article} />
         </Box>
       </GridItem>
